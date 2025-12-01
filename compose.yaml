@@ -1,0 +1,27 @@
+services:
+  jupyter:
+    build:
+      context: .
+    container_name: jupyter
+    expose:
+      - "8888"
+    networks:
+      - jupynet
+    volumes:
+      - data:/anaconda
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - 80:80
+    volumes: 
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - jupynet
+
+networks:
+  jupynet:
+
+volumes:
+  data:
