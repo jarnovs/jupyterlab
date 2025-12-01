@@ -3,8 +3,8 @@ services:
     build:
       context: .
     container_name: jupyter
-    expose:
-      - "8888"
+    ports:
+      - 8888:8888
     networks:
       - jupynet
     volumes:
