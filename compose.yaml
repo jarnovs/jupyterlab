@@ -3,8 +3,6 @@ services:
     build:
       context: .
     container_name: jupyter
-    ports:
-      - 8888:8888
     networks:
       - jupynet
     volumes:
@@ -12,9 +10,9 @@ services:
 
   nginx:
     image: nginx:latest
-    container_name: nginx
+    container_name: junginx
     ports:
-      - 80:80
+      - 8888:8888
     volumes: 
       - ./default.conf:/etc/nginx/conf.d/default.conf
     networks:
